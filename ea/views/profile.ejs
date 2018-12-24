@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+    <title>Node Authentication</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <style>
+        body         { padding-top:80px; word-wrap:break-word; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="page-header text-center">
+        <h1><span class="fa fa-anchor"></span> Profile Page</h1>
+        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    </div>
+
+    <div class="row">
+
+        <!-- LOCAL INFORMATION -->
+        <div class="col-sm-12">
+            <div class="well">
+                <h3><span class="fa fa-user"></span> Local</h3>
+
+                <% if (user.local.email) { %>
+                    <p>
+                        <strong>email</strong>: <%= user.local.email %><br>
+                    </p>
+					<form class="add_habit" action="/habit/add" method="POST">
+						<h3>New habit:</h3>
+						<label for="name">Habit name:</label><br>
+						<input type="text" name="name" placeholder="Name" required/><br>
+						<label for="duration">How many hours per day?</label><br>
+						<input type="number" value="1.5" name="duration" min="0.25" max="24" step="0.25" required> hours<br>
+						<label for="priority">Priority:</label><br>
+						<input type="range" min="0" max="100" value="50" name="priority" required><br>
+						<label for="split">Minimum session duration:</label><br>
+						<input type="number" value="0.5" name="split" min="0" max="24" step="0.25" required> hours<br>
+						<label for="min">You can do it from:</label><br>
+						<input type="time" name="min" value="00:00" required><br>
+						<label for="max">To:</label><br>
+						<input type="time" name="max" value="23:59:59" required><br>
+						<input type="checkbox" name="Monday" checked required> <label for="Monday">Monday</label>
+						  <input type="checkbox" name="Tuesday" checked required> <label for="Tuesday">Tuesday</label>
+						  <input type="checkbox" name="Wednesday" checked required> <label for="Wednesday">Wednesday</label>
+						  <input type="checkbox" name="Thursday" checked required> <label for="Thursday">Thursday</label>
+						  <input type="checkbox" name="Friday" checked required> <label for="Friday">Friday</label>
+						  <input type="checkbox" name="Saturday" checked required> <label for="Saturday">Saturday</label>
+						  <input type="checkbox" name="Sunday" checked required> <label for="Sunday">Sunday</label>
+						  <br>
+						<input type="submit" value="Add habit">
+					</form>
+                <% } else { %>
+                    <a href="/connect/local" class="btn btn-default">LOG IN</a>
+                <% } %>
+
+            </div>
+        </div>
+		<div class="text-center">
+	        <p>A demo by <a href="http://scotch.io">Scotch</a>.</p>
+	    </div>
+</div>
+</body>
+</html>
