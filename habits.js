@@ -21,7 +21,7 @@ function habitReminder(g)
     var tmp = habits.filter(h => h.min <= new Date().getHours() && h.max >= new Date().getHours() && h.progress < h.duration);
     tmp.sort((a, b) => a.priority > b.priority);
     tmp = tmp.filter(x => x.priority == tmp[0].priority);
-    tmp.sort((a, b) => (a.splittable < (a.duration - a.progress) ? a.splittable : (a.duration - a.progress)) - (b.splittable < (b.duration - b.progress) ? b.splittable : (b.duration - b.progress)));
+    tmp.sort((a, b) => ((a.splittable < (a.duration - a.progress)) ? a.splittable : (a.duration - a.progress)) - ((b.splittable < (b.duration - b.progress)) ? b.splittable : (b.duration - b.progress)));
     console.log(tmp)
 }
 habitReminder(g)

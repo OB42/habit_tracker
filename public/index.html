@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Socket.io</title>
+    </head>
+
+    <body>
+        <h1>Communication avec socket.io !</h1>
+
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+            var socket = io.connect('http://localhost:8080');
+            socket.on("newChat", function(msg){
+            });
+//            socket.emit("lock_time", {});
+            function choose_habit(id, duration)
+            {
+                console.log(id, duration)
+//                socket.emit("choose_habit", this.id);
+return false;
+            }
+            function recommendation_button(habit)
+            {
+                `<form onsubmit="return choose_habit(${habit.id}, this.querySelector('.duration').value)">
+                <h3>Recommended:</h3>
+                ${habit.name} for <input type="number" value="${habit.split * (habit.duration - habit.progress)}" class="duration" step="${habit.split}" min="${habit.split * (habit.duration - habit.progress)}" max='${habit.duration - habit.progress}'/> hours
+                <button id="${habit.id}">I'll do it !</button>
+                </form>
+                `;
+                document.body.innerHTML += s;
+            }
+            document.body.innerHTML = new Date().getTime()
+var h =             [ { duration: 1,
+    name: 'reading',
+    min: 0,
+    max: 24,
+    split: 0.5,
+    priority: 1,
+    progress: 0, id: 0 }];
+    recommendation_button(h[0])
+        </script>
+        <div class="recommendation_buttons"></div>
+    </body>
+</html>
