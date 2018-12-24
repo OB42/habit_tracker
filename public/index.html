@@ -6,40 +6,69 @@
     </head>
 
     <body>
-        <h1>Communication avec socket.io !</h1>
-
+        <div class="recommendation_buttons"></div>
         <script src="/socket.io/socket.io.js"></script>
         <script>
             var socket = io.connect('http://localhost:8080');
-            socket.on("newChat", function(msg){
-            });
+            socket.on("new_recommendations", add_recommendation_buttons);
+            socket.emit("ask_recommendations", {login:"login1", hours:new Date().getHours()})
 //            socket.emit("lock_time", {});
             function choose_habit(id, duration)
             {
                 console.log(id, duration)
 //                socket.emit("choose_habit", this.id);
-return false;
+                return false;
             }
-            function recommendation_button(habit)
+            function add_recommendation_buttons(habits)
             {
-                `<form onsubmit="return choose_habit(${habit.id}, this.querySelector('.duration').value)">
-                <h3>Recommended:</h3>
-                ${habit.name} for <input type="number" value="${habit.split * (habit.duration - habit.progress)}" class="duration" step="${habit.split}" min="${habit.split * (habit.duration - habit.progress)}" max='${habit.duration - habit.progress}'/> hours
-                <button id="${habit.id}">I'll do it !</button>
-                </form>
-                `;
-                document.body.innerHTML += s;
+                document.querySelector(".recommendation_buttons").innerHTML = "<h3>Recommended:</h3>" + habits.map(habit =>
+                    `<form onsubmit="return choose_habit(${habit.name}, 
+                    this.querySelector('.duration').value)">
+                    ${habit.name} for <input type="number"
+                    value="${habit.split || (habit.duration - habit.progress)}" 
+                    class="duration" step="${habit.split}"
+                    min="${habit.split}"
+                    max='${habit.duration - habit.progress}'/> hours
+                    <button id="${habit.name}">I'll do it !</button>
+                    </form>
+                    `
+                ).join('\n');
             }
-            document.body.innerHTML = new Date().getTime()
-var h =             [ { duration: 1,
+
+    var h = [{duration: 1,
     name: 'reading',
     min: 0,
     max: 24,
     split: 0.5,
     priority: 1,
     progress: 0, id: 0 }];
-    recommendation_button(h[0])
+
         </script>
-        <div class="recommendation_buttons"></div>
+        <br>
+        <form class="add_habit">
+            <h3>New habit:</h3>
+            <label for="name">Habit name:</label><br>
+            <input type="text" name="name" /><br>
+            <label for="duration">How many hours/day?</label><br>
+            <input type="time" name="duration" min="0:00" max="24:00" required><br>
+            <label for="priority">Priority:</label><br>
+            <input type="range" min="1" max="100" value="50" name="priority"><br>
+            <label for="split">Minimum session duration:</label><br>
+            <input type="time" name="split" min="0:00" max="24:00" required><br>
+            <label for="min">You can do it from:</label><br>
+            <input type="time" name="min" value="00:00" min="0:00" max="24:00" required><br>
+            <label for="max">To:</label><br>
+            <input type="time" name="max" value="23:59" min="0:00" max="24:00" required><br>
+            <input type="checkbox" name="Monday" checked> <label for="Monday">Monday</label>
+              <input type="checkbox" name="Tuesday" checked> <label for="Tuesday">Tuesday</label>
+              <input type="checkbox" name="Wednesday" checked> <label for="Wednesday">Wednesday</label>
+              <input type="checkbox" name="Thursday" checked> <label for="Thursday">Thursday</label>
+              <input type="checkbox" name="Friday" checked> <label for="Friday">Friday</label>
+              <input type="checkbox" name="Saturday" checked> <label for="Saturday">Saturday</label>
+              <input type="checkbox" name="Sunday" checked> <label for="Sunday">Sunday</label>
+              <br>
+            <input type="submit" value="Add habit" />
+
+        </form>
     </body>
 </html>

@@ -1,6 +1,6 @@
 var http = require('http');
 var fs = require("fs");
-var db = fs.exists(__dirname + "./data.json") ? JSON.parse(fs.readFileSync(__dirname + "./data.json").toString()) : {};
+var db = fs.existsSync(__dirname + "/data.json") ? JSON.parse(fs.readFileSync(__dirname + "/data.json").toString()) : {};
 var express = require('express');
 var app = express();
 var server = require('http').createServer(app);
@@ -16,11 +16,21 @@ app
   res.send('Hello World')
 })
 
-
+function habitReminder(habits, hours)
+{
+    habits = JSON.parse(JSON.stringify(habits))
+    var tmp = habits.filter(h => h.min <= hours && h.max >= hours && h.progress < h.duration);
+    tmp.sort((a, b) => a.priority > b.priority);
+    tmp = tmp.filter(x => x.priority == tmp[0].priority);
+    tmp.sort((a, b) => ((a.split < (a.duration - a.progress)) ? a.split : (a.duration - a.progress)) - ((b.split < (b.duration - b.progress)) ? b.split : (b.duration - b.progress)));
+    return (tmp);
+}
 var io = require('socket.io').listen(server);
 
-// Quand un client se connecte, on le note dans la console
 io.sockets.on('connection', function (socket) {
+    socket.on('ask_recommendations', function (data) {
+        socket.emit('new_recommendations', habitReminder(db[data.login].habits, data.hours))
+    });
     socket.on('add_habit', function (data) {
         try {
             if (!db[data.pseudo])
@@ -68,3 +78,13 @@ io.sockets.on('connection', function (socket) {
 });
 
 server.listen(8080);
+
+/*
+     { duration: 1,
+       name: 'math',
+       min: 0,
+       max: 24,
+       split: 0.5,
+       priority: 2,
+       progress: 0 }
+*/
