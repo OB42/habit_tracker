@@ -1,0 +1,56 @@
+
+function subscribeDevice() {
+    //this._stateChangeCb(this._state.STARTING_SUBSCRIBE);
+
+    return new Promise((resolve, reject) => {
+		console.log("x")
+      if (Notification.permission === 'denied') {
+        return reject(new Error('Push messages are blocked.'));
+      }
+
+      if (Notification.permission === 'granted') {
+        return resolve();
+      }
+
+      if (Notification.permission === 'default') {
+        Notification.requestPermission((result) => {
+			console.log("y")
+          if (result !== 'granted') {
+			  console.log("r")
+
+            reject(new Error('Bad permission result'));
+          }
+
+          resolve();
+        });
+      }
+    })
+    .then(() => {
+      // We need the service worker registration to access the push manager
+      return navigator.serviceWorker.ready
+      .then((serviceWorkerRegistration) => {
+        return serviceWorkerRegistration.pushManager.subscribe(
+          {
+            userVisibleOnly: true,
+            applicationServerKey: this._publicApplicationKey,
+          }
+        );
+      })
+      .then((subscription) => {
+		  console.log("a")
+        // this._stateChangeCb(this._state.SUBSCRIBED);
+        // this._subscriptionUpdate(subscription);
+      })
+      .catch((subscriptionErr) => {
+		  console.log("b")
+        // this._stateChangeCb(this._state.ERROR, subscriptionErr);
+      });
+    })
+    .catch(() => {
+		console.log("c")
+
+      // Check for a permission prompt issue
+      // this._permissionStateChange(Notification.permission);
+    });
+}
+subscribeDevice();

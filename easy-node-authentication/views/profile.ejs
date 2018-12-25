@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+<head>
+    <title>Node Authentication</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+	<meta name="viewport" content="width=device-width, user-scalable=no">
+    <style>
+        body         { padding-top:80px; word-wrap:break-word; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="page-header text-center">
+        <h1><span class="fa fa-anchor"></span> Profile Page</h1>
+        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    </div>
+
+    <div class="row">
+
+        <!-- LOCAL INFORMATION -->
+        <div class="col-sm-12">
+            <div class="well">
+
+				<%
+				if (user.local.email) { %>
+				<p>
+					<h3><span class="fa fa-user"></span> Hi <%= user.local.email %> !</h3>
+				</p>
+                <%
+					function habitReminder(g)
+					{
+						console.log(g)
+						habits = JSON.parse(JSON.stringify(g.habits));
+						console.log(habits)
+						var tmp = habits.filter(h => h.min <= new Date().getHours() && h.max >= new Date().getHours() && h.progress < h.duration);
+						console.log(tmp)
+						tmp.sort((a, b) => a.priority > b.priority);
+						console.log(tmp)
+						tmp = tmp.filter(x => x.priority == tmp[0].priority);
+						console.log(tmp)
+						tmp.sort((a, b) => ((a.split < (a.duration - a.progress)) ? a.split : (a.duration - a.progress)) - ((b.split < (b.duration - b.progress)) ? b.split : (b.duration - b.progress)));
+					  	console.log(tmp)
+						return (tmp)
+					}
+					function choose_habit(id, duration)
+					{
+						console.log(id, duration)
+						//socket.emit("choose_habit", this.id);
+						return (false);
+					}
+					function add_recommendation_buttons(habits)
+					{
+						return("<h3>Recommended:</h3>" + habits.map(habit =>
+							`<form onsubmit="return choose_habit(${habit.name},
+							this.querySelector('.duration').value)">
+							${habit.name} for <input type="number"
+							value="${habit.split || (habit.duration - habit.progress)}"
+							class="duration" step="${habit.split}"
+							min="${habit.split}"
+							max='${habit.duration - habit.progress}'/> hours
+							<button id="${habit.name}">I'll do it !</button>
+							</form>
+							`
+						).join('\n') + `<button id="random" onclick="randomHabit()">Choose for me !</button>`);
+					}
+					habits = habitReminder(user.local)
+					%>
+
+					<h3>Recommended:</h3>
+					<div class="recommendation_buttons">
+						<% habits.forEach(function(habit) {
+							%>
+							<form action="/habit/choose" method="POST" onsubmit='return choose_habit("<%=habit.name %>",
+							this.querySelector(".duration").value)'>
+							<%= habit.name %> for <input type="number"
+							value="<%= habit.split || (habit.duration - habit.progress) %>"
+							class="duration" step="<%= habit.split %>"
+							min="<%= habit.split %>"
+							max='<%= habit.duration - habit.progress %>'/> hours
+							<button id="${habit.name %>">I'll do it !</button>
+							</form>
+							<%
+						})%>
+					</div>
+					<form class="add_habit" action="/habit/new" method="POST">
+						<h3>New habit:</h3>
+						<label for="name">Habit name:</label><br>
+						<input type="text" name="name" placeholder="Name" required/><br>
+						<label for="duration">How many hours per day?</label><br>
+						<input type="number" value="1.5" name="duration" min="0.25" max="24" step="0.25" required> hours<br>
+						<label for="priority">Priority:</label><br>
+						<input type="range" min="0" max="100" value="50" name="priority" required><br>
+						<label for="split">Minimum  duration:</label><br>
+						<input type="number" value="0.5" name="split" min="0" max="24" step="0.25" required> hours<br>
+						<label for="min">You can do it from:</label><br>
+						<input type="time" name="min" value="00:00" required><br>
+						<label for="max">To:</label><br>
+						<input type="time" name="max" value="23:59:59" required><br>
+						<label>On:</label><br>
+						<input type="checkbox" name="Monday" checked required> <label for="Monday">Monday</label>
+						  <input type="checkbox" name="Tuesday" checked > <label for="Tuesday">Tuesday</label>
+						  <input type="checkbox" name="Wednesday" checked > <label for="Wednesday">Wednesday</label>
+						  <input type="checkbox" name="Thursday" checked > <label for="Thursday">Thursday</label>
+						  <input type="checkbox" name="Friday" checked > <label for="Friday">Friday</label>
+						  <input type="checkbox" name="Saturday" checked > <label for="Saturday">Saturday</label>
+						  <input type="checkbox" name="Sunday" checked > <label for="Sunday">Sunday</label>
+						  <br>
+						<input type="submit" value="Add habit">
+					</form>
+                <% } else { %>
+                    <a href="/connect/local" class="btn btn-default"> LOG IN</a>
+                <% } %>
+
+            </div>
+        </div>
+		<div class="text-center">
+	        <p>A demo by <a href="http://scotch.io">Scotch</a>.</p>
+	    </div>
+</div>
+</body>
+</html>
