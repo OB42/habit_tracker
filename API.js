@@ -5,9 +5,8 @@ var db = {
 db.actions.loadDatabase();
 module.exports.insertFunction = (req, res) => {
 	try {
-		console.log(req)
 		var tmp_action = formToDoc(req.body);
-		console.log(req.user, req.body)
+		console.log("insert", req.body)
 		tmp_action.user_id = req.user._id;
 		insertAction(tmp_action, (err, newDoc) => {
 			if (err) return tmp_err(res, err);
@@ -22,21 +21,21 @@ module.exports.updateAction = (req, res) => {
 	try {
 		updateAction({user_id: req.user._id, _id: req.params.id}, formToDoc(req.body), (err, newDoc) => {
 			if (err) return tmp_err(res, err);
-			res.status(201);
+			res.status(204);
 			res.end();
 		})
 	}
-	catch (err) { return tmp_err(res, err); }
+	catch (err) { tmp_err(res, err); }
 };
 module.exports.removeAction = (req, res) =>{
 	try {
 		removeAction({id: req.user._id, _id: req.params.id}, (err, newDoc) => {
 			if (err) return tmp_err(res, err);
-			res.status(200);
+			res.status(202);
 			res.end();
 		});
 	}
-	catch (err) { return tmp_err(res, err); }
+	catch (err) { tmp_err(res, err); }
 };
 module.exports.getUserActions = (req, res) =>{
 	try {
@@ -45,17 +44,16 @@ module.exports.getUserActions = (req, res) =>{
 			res.send(JSON.stringify(docs));
 		});
 	}
-	catch (err) { return tmp_err(res, err); }
+	catch (err) { tmp_err(res, err); }
 };
 module.exports.getRecommendations = (req, res) => {
 	try {
-		var id = TMP_ID;//TODO:replace with authentified user id
 		db.actions.find({ user_id: id }, function (err, docs) {
 			if (err) return tmp_err(res, err);
 			res.send(JSON.stringify(habitReminder(docs)));
 		});
 	}
-	catch (err) { return tmp_err(res, err); }
+	catch (err) { tmp_err(res, err); }
 };
 function habitReminder(actions, hours)
 {
@@ -83,6 +81,7 @@ function formToDoc(body)
 }
 function tmp_err(res, err)
 {
+	console.log("api err", err)
 	res.status(520)
 	res.end();
 }

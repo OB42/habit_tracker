@@ -12,13 +12,10 @@ module.exports.createUser = function createUser(newUser, callback){
   bcrypt.genSalt(10, function(err, salt) {
 		if (err) return console.error(err);
     bcrypt.hash(newUser.password, salt, function(err, hash) {
-			if (err) return console.error(err);
+		if (err) return console.error(err);
       newUser.password = hash;
 			console.log(newUser)
-			db.users.insert(newUser, (err) => {
-				if (err) return console.error(err);
-				callback(err, "OK")
-			});
+			db.users.insert(newUser, callback);
     });
   });
 }

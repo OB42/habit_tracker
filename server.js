@@ -33,14 +33,15 @@ app.post(API_ROUTE + '/actions', API.insertFunction)
 	.get(API_ROUTE + '/recommendations', API.getRecommendations);
 // Register User
 app.post('/register', function(req, res){
-	var password = req.body.password;
 	var newUser = {
-	email: req.body.email,
-	password: req.body.password
+		email: req.body.email,
+		password: req.body.password
 	};
-	User.createUser(newUser, function(err, user){
+	User.createUser(newUser, function(err){
 		//todo catch err
-		if(err) throw err;
+		if (err) {
+			console.error(err);
+		}
 		res.redirect('/profile')
 	});
 });
@@ -71,7 +72,6 @@ passport.deserializeUser(function(id, done) {
 		done(err, user);
 	});
 });
-// Endpoint to login
 app.post('/login', passport.authenticate('local'),
 	(req, res) => res.redirect('/profile'));
 app.get('/logout', function(req, res){
