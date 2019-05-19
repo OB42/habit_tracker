@@ -4,8 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "nodemon .",
+    "test": "standard"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,21 @@
   "homepage": "https://github.com/ob42/habit_tracker#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
-    "express": "^4.17.0"
+    "express": "^4.16.4",
+    "hbs": "^4.0.1",
+    "cancan": "^3.1.0",
+    "cookie-parser": "~1.4.3",
+    "express-session": "~1.14.1",
+    "mongoose": "~4.13.1",
+    "passport": "~0.3.2",
+    "passport-facebook": "~2.1.1",
+    "passport-google-oauth": "~1.0.0",
+    "passport-local": "~1.0.0",
+    "passport-twitter": "~1.0.4",
+    "bcryptjs": "*"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.4",
+    "standard": "^12.0.1"
   }
 }

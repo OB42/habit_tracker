@@ -1,0 +1,51 @@
+// var io = require('socket.io').listen(server);
+//
+// io.sockets.on('connection', function (socket) {
+// 	socket.on('ask_recommendations', function (data) {
+// 		socket.emit('new_recommendations', habitReminder(db[data.login].actions, data.hours))
+// 	});
+// 	socket.on('add_habit', function (data) {
+// 		try {
+// 			if (!db[data.pseudo])
+// 				db[data.pseudo] = {actions: [], locked: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}
+// 		//TODO: IMPORTANT, SANITIZE INPUT U LAZY MORON
+// 			db[data.pseudo].actions[data.habit.name] = data.habit;
+// 		}
+// 		catch(err)
+// 		{
+// 			console.error(err)
+// 			socket.emit('error', 'add_habit_error');
+// 		}
+// 	});
+// 	socket.on('remove_habit', function (data) {
+// 		try {
+// 			delete db[data.pseudo].actions[data.habit];
+// 		}
+// 		catch(err)
+// 		{
+// 			console.error(err);
+// 			socket.emit('error', 'remove_habit_error');
+// 		}
+// 	});
+// 	socket.on('choose_habit', function (data) {
+// 		db[data.pseudo]
+// 		try {
+// 			db[data.pseudo].actions[data.habit].progress -= data.duration;
+// 		}
+// 		catch(err)
+// 		{
+// 			console.error(err);
+// 			socket.emit('error', 'choose_habit_error');
+// 		}
+// 	});
+// 	socket.on('lock_time', function (data) {
+// 		try {
+// 			db[data.pseudo].locked = data.locked
+// 		}
+// 		catch(err)
+// 		{
+// 			console.error(err);
+// 			socket.emit('error', 'lock_time_error');
+// 		}
+// 	});
+// });
