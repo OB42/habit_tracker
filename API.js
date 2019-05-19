@@ -3,51 +3,6 @@ var db = {
 	actions: new Datastore({ filename: __dirname + '/actions_db' })
 }
 db.actions.loadDatabase();
-function habitReminder(actions, hours)
-{
-	actions = JSON.parse(JSON.stringify(actions))
-	var tmp = actions.filter(h => h.min <= hours && h.max >= hours && h.progress < h.duration);
-	tmp.sort((a, b) => a.priority > b.priority);
-	tmp = tmp.filter(x => x.priority == tmp[0].priority);
-	tmp.sort((a, b) => ((a.split < (a.duration - a.progress)) ? a.split : (a.duration - a.progress)) - ((b.split < (b.duration - b.progress)) ? b.split : (b.duration - b.progress)));
-	return (tmp);
-}
-function formToDoc(body)
-{
-	return ({
-		name: body.name,
-		time_goal: parseFloat(body.duration),
-		priority: parseFloat(body.priority),
-		minimum_duration: parseFloat(body.split),
-		availability: {
-			//this is garbage
-			min: parseInt(body.min.split(":")[0]) + body.min.split(":")[1] / 60,
-			max: parseInt(body.max.split(":")[0]) + body.max.split(":")[1] / 60,
-			week: [!!body['Monday'], !!body['Tuesday'], !!body['Wednesday'], !!body['Thursday'], !!body['Friday'], !!body['Saturday'], !!body['Sunday']]
-		}
-	})
-}
-function tmp_err(res, err)
-{
-	console.error("ERROR", err)
-	res.status(520);
-	res.end()
-}
-function insertAction(data, callback)
-{
-	console.log('Creating action...', data);
-	db.actions.insert(data, callback);
-}
-function updateAction(ids, data, callback)
-{
-	console.log('Updating action...', data);
-	db.actions.update(ids, data, callback);
-}
-function removeAction(ids, callback)
-{
-	console.log('Removing action...', data);
-	db.actions.remove(ids, {}, callback);
-}
 module.exports.insertFunction = (req, res) => {
 	try {
 		console.log(req)
@@ -102,3 +57,47 @@ module.exports.getRecommendations = (req, res) => {
 	}
 	catch (err) { return tmp_err(res, err); }
 };
+function habitReminder(actions, hours)
+{
+	actions = JSON.parse(JSON.stringify(actions))
+	var tmp = actions.filter(h => h.min <= hours && h.max >= hours && h.progress < h.duration);
+	tmp.sort((a, b) => a.priority > b.priority);
+	tmp = tmp.filter(x => x.priority == tmp[0].priority);
+	tmp.sort((a, b) => ((a.split < (a.duration - a.progress)) ? a.split : (a.duration - a.progress)) - ((b.split < (b.duration - b.progress)) ? b.split : (b.duration - b.progress)));
+	return (tmp);
+}
+function formToDoc(body)
+{
+	return ({
+		name: body.name,
+		time_goal: parseFloat(body.duration),
+		priority: parseFloat(body.priority),
+		minimum_duration: parseFloat(body.split),
+		availability: {
+			//this is garbage
+			min: parseInt(body.min.split(":")[0]) + body.min.split(":")[1] / 60,
+			max: parseInt(body.max.split(":")[0]) + body.max.split(":")[1] / 60,
+			week: [!!body['Monday'], !!body['Tuesday'], !!body['Wednesday'], !!body['Thursday'], !!body['Friday'], !!body['Saturday'], !!body['Sunday']]
+		}
+	})
+}
+function tmp_err(res, err)
+{
+	res.status(520)
+	res.end();
+}
+function insertAction(data, callback)
+{
+	console.log('Creating action...', data);
+	db.actions.insert(data, callback);
+}
+function updateAction(ids, data, callback)
+{
+	console.log('Updating action...', data);
+	db.actions.update(ids, data, callback);
+}
+function removeAction(ids, callback)
+{
+	console.log('Removing action...', data);
+	db.actions.remove(ids, {}, callback);
+}

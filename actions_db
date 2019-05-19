@@ -1,6 +1,6 @@
 {"name":"regf","time_goal":1.5,"priority":50,"minimum_duration":0.5,"availability":{"min":0,"max":23.983333333333334,"week":[true,true,true,true,true,true,true]},"user_id":"9ddMkKSrUtDcjIUQ","_id":"9ju2E1x4LOT2809C"}
 {"name":"rtf","time_goal":1.5,"priority":50,"minimum_duration":0.5,"availability":{"min":0,"max":23.983333333333334,"week":[true,true,true,true,true,true,true]},"_id":"LPa8n7FtrVvXZMTU"}
 {"name":"test","time_goal":1.5,"priority":50,"minimum_duration":0.5,"availability":{"min":0,"max":23.983333333333334,"week":[true,true,true,true,true,true,true]},"_id":"dV3siKBdniBswqr2"}
+{"name":"test","time_goal":1.5,"priority":50,"minimum_duration":0.5,"availability":{"min":0,"max":23.983333333333334,"week":[true,true,true,true,true,true,true]},"user_id":"jH2RcomG14RcZBLh","_id":"kHk5UCgoOLJvs1KQ"}
 {"name":"test","time_goal":1.5,"priority":50,"minimum_duration":0.5,"availability":{"min":0,"max":23.983333333333334,"week":[true,true,true,true,true,true,true]},"_id":"lB2N4XgG7EpsMK4g"}
 {"name":"code","time_goal":2.75,"priority":100,"minimum_duration":0.5,"availability":{"min":0,"max":23.983333333333334,"week":[true,true,true,true,true,true,true]},"_id":"scNvcIcGvleByoJh"}
-{"name":"test","time_goal":1.5,"priority":50,"minimum_duration":0.5,"availability":{"min":0,"max":23.983333333333334,"week":[true,true,true,true,true,true,true]},"user_id":"jH2RcomG14RcZBLh","_id":"kHk5UCgoOLJvs1KQ"}
