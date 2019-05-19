@@ -4,12 +4,17 @@ var db = {
 	users: new Datastore({ filename: __dirname + '/users_db' })
 }
 db.users.loadDatabase();
+db.users.ensureIndex({ fieldName: 'email', unique: true }, function (err) {
+  // If there was an error, err is not null
+	console.log(err)
+});
 module.exports.createUser = function createUser(newUser, callback){
   bcrypt.genSalt(10, function(err, salt) {
 		if (err) return console.error(err);
     bcrypt.hash(newUser.password, salt, function(err, hash) {
 			if (err) return console.error(err);
       newUser.password = hash;
+			console.log(newUser)
 			db.users.insert(newUser, (err) => {
 				if (err) return console.error(err);
 				callback(err, "OK")
@@ -17,9 +22,9 @@ module.exports.createUser = function createUser(newUser, callback){
     });
   });
 }
-module.exports.getUserByUsername = function getUserByUsername(login, callback)
+module.exports.getUserByUsername = function getUserByUsername(email, callback)
 {
-	db.users.find({login}, (err, users) => callback(err, users[0]));
+	db.users.find({email}, (err, users) => callback(err, users[0]));
 }
 module.exports.getUserById = function getUserById(id, callback)
 {

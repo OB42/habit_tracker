@@ -48,7 +48,6 @@ function removeAction(ids, callback)
 	console.log('Removing action...', data);
 	db.actions.remove(ids, {}, callback);
 }
-
 module.exports.insertFunction = (req, res) => {
 	try {
 		console.log(req)

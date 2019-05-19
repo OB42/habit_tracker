@@ -51,18 +51,20 @@ app.post(API_PATH + '/actions', API.insertFunction)
 app.post('/register', function(req, res){
   var password = req.body.password;
 	var newUser = {
-    login: req.body.login,
+    email: req.body.email,
     password: req.body.password
   };
+	console.log('reg')
   User.createUser(newUser, function(err, user){
     if(err) throw err;
 		//redirect
+		console.log(err, user)
     res.send(user).end()
   });
 });
 var LocalStrategy = require('passport-local').Strategy;
 passport.use(new LocalStrategy(    {
-        usernameField: 'login',
+        usernameField: 'email',
         passwordField: 'password'
     },
   function(username, password, done) {
@@ -90,25 +92,24 @@ passport.deserializeUser(function(id, done) {
     done(err, user);
   });
 });
-
 // Endpoint to login
 app.post('/login', passport.authenticate('local'),
 	function(req, res) {
 		console.log("log", req.user)
-		res.send(req.user.login);
+		res.send(req.user.email);
 	});
 // Endpoint to get current user
 app.get('/user', function(req, res){
-  res.send(req.user.login);
+  res.send(req.user.email);
 })
 app.get('/', function(req, res){
 	res.setHeader('Content-Type', 'text/html'); //or text/plain
   res.end(`
 		<form method="POST" action="login">
-		<input name="login">
+		<input name="email">
 		<input name="password"><input type="submit"></form>
 		<form method="POST" action="register">
-		<input name="login">
+		<input name="email">
 		<input name="password"><input type="submit"></form>
 		`);
 })
@@ -116,7 +117,7 @@ app.get('/logout', function(req, res){
   req.logout();
   res.send(null)
 });
-app.listen(8080);
+app.listen(port);
 
 /*
 	 { duration: 1,
