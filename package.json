@@ -26,13 +26,16 @@
     "express": "^4.16.4",
     "express-session": "~1.14.1",
     "hbs": "^4.0.1",
+    "localtunnel": "^1.9.1",
     "mongoose": "~4.13.1",
+    "nedb": "^1.8.0",
     "npm-watch": "^0.6.0",
     "passport": "~0.3.2",
     "passport-facebook": "~2.1.1",
     "passport-google-oauth": "~1.0.0",
     "passport-local": "~1.0.0",
-    "passport-twitter": "~1.0.4"
+    "passport-twitter": "~1.0.4",
+    "weekli.js": "^1.0.1"
   },
   "devDependencies": {
     "nodemon": "^1.18.4",

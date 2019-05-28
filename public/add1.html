@@ -1,542 +1,287 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Scrum - Free Bootstrap 4 Multipurpose Landing Page Template</title>
-    <meta name="description" content="Scrum is a beautiful Bootstrap 4 template for multipurpose landing pages."/>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Test</title>
+	<meta name="description" content="Scrum is a beautiful Bootstrap 4 template for multipurpose landing pages."/>
 
-    <!--Google font IBM Plex Sans-->
-    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,400,500,700" rel="stylesheet">
+	<!--Google font IBM Plex Sans-->
+	<link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,400,500,700" rel="stylesheet">
 
-    <!--vendors styles-->
+	<!--vendors styles-->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <!-- Bootstrap CSS / Color Scheme -->
-    <link rel="stylesheet" href="css/red.css" id="theme-color">
+	<!-- Bootstrap CSS / Color Scheme -->
+	<link rel="stylesheet" href="css/red.css" id="theme-color">
+	<link rel="stylesheet" type="text/css" href="weekli.js/css/weekli.css"/>
+	<style>
+	.wk-cell:not(.available) {
+	    background-color: #e8e8e8!important;
+	}
+	.input-name {
+		color: #495057!important;
+		background-color: #e9ecef!important;
+		border: 1px solid #ced4da!important;
+	}
+	.wk-day {
+		max-width: 6em!important;
+		font-size: 80%;
+	}
+
+	table.weekli_desktop .wk-day-abbrv {
+	  display: inline-block!important;
+	}
+	table.weekli_desktop .wk-day-long {
+	  display: none!important;
+	}
+	table.weekli_desktop .wk-header
+	{
+		padding: 0px!important;
+	}
+	.wk-time {
+		/* font-size: 14px!important; */
+	}
+	table.weekli tr {
+    	height: 1em!important;
+	}
+	.input-group-text {
+		padding: 0.5rem!important;
+	}
+	.task-progress {
+		width: 100%!important;
+		/* height: 1em; */
+		display: inline-flex;
+	}
+	.add_task select {
+		min-width: 100px!important;
+	}
+	.no-tasks:not(:last-child), .task:last-child hr {
+		display: none;
+	}
+
+	</style>
 </head>
 <body>
-
+<script type="text/javascript" src="weekli.js/js/weekli.js"></script>
 <!--navigation-->
 <section class="smart-scroll">
-    <div class="container-fluid">
-        <nav class="navbar navbar-expand-md navbar-light">
-            <a class="navbar-brand heading-black" href="index.html">
-                Scrum
-            </a>
-            <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse"
-                    data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                <span data-feather="menu"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link page-scroll" href="#features">Features</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link page-scroll" href="#reviews">Reviews</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link page-scroll" href="#pricing">Pricing</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link page-scroll" href="#faq">FAQ</a>
-                    </li>
-                </ul>
-                <form class="form-inline">
-                    <a class="btn btn-primary page-scroll" href="#signup">Try it for free</a>
-                </form>
-            </div>
-        </nav>
-    </div>
+	<div class="container-fluid">
+		<nav class="navbar navbar-expand-md navbar-light pb-2 pt-2">
+			<a class="navbar-brand heading-black" href="index.html">
+				LifeCoach
+			</a>
+			<button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse"
+					data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+					aria-label="Toggle navigation">
+				<span data-feather="menu"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarCollapse">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item">
+						<a class="nav-link page-scroll" href="#features">Features</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link page-scroll" href="#reviews">Reviews</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link page-scroll" href="#pricing">Pricing</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link page-scroll" href="#faq">FAQ</a>
+					</li>
+				</ul>
+				<form class="form-inline">
+					<a class="btn btn-primary page-scroll" href="#signup">Try it for free</a>
+				</form>
+			</div>
+		</nav>
+	</div>
 </section>
 
-<!--hero header-->
-<section class="pt-5" id="home">
-    <div class="container-fluid">
-        <div class="row vh-md-100">
-            <div class="col-md-4 ml-auto my-auto text-center text-md-left order-2 order-md-1">
-                <h1 class="text-capitalize">A Simple way to manage multiple projects.</h1>
-                <p class="lead text-muted mb-5">Scrum is developed for agile teams who manage multiple projects. Project
-                    management has become easy and fun.</p>
-                <a href="#features" class="btn btn-primary d-inline-flex flex-row align-items-center page-scroll">
-                    Get Started
-                    <em data-feather="arrow-right" width="20" height="20" class="ml-2"></em>
-                </a>
-            </div>
-            <div class="col-md-7 my-auto pt-5 pt-md-0 order-1 order-md-2">
-                <img src="img/screen.png" class="img-fluid d-block mx-auto" alt="Mockup"/>
-            </div>
-        </div>
-    </div>
+<section class="py-6" id="home">
+	<div class="container col-md-12 col-lg-11 ">
+		<div class="row">
+			<div class="pl-1 pr-1 col-md-6 col-sm-12 mb-2 text-md-left pb-md-0">
+				<div class="card">
+					<div class="card-body p-2 tasks">
+						<h5 class="text-center">Your tasks</h5>
+						<span class="text-muted no-tasks">None for now...</span>
+						<div class="task">
+							<button type="button" class="float-right btn btn-outline-danger">x Delete</button>
+							<button type="button" class="btn btn-outline-secondary float-right mr-1">Edit</button>
+							<h6>Reading</h6><span></span>
+							<span class="text-muted">15 minutes today</span>
+							<div class="progress task-progress">
+								<div class="progress-bar bg-warning" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+								</div>
+							</div>
+							<hr>
+						</div>
+						<div class="task">
+							<button type="button" class="float-right btn btn-outline-danger">x Delete</button>
+							<button type="button" class="btn btn-outline-secondary float-right mr-1">Edit</button>
+							<h6>Push-ups</h6><span></span>
+							<span class="text-muted">40 times today</span>
+							<div class="progress task-progress">
+								<div class="progress-bar bg-success" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
+								</div>
+							</div>
+							<hr>
+						</div>
+						<div class="task">
+							<button type="button" class="float-right btn btn-outline-danger">x Delete</button>
+							<button type="button" class="btn btn-outline-secondary float-right mr-1">Edit</button>
+							<h6>Meditation</h6><span></span>
+							<span class="text-muted">10 minutes today</span>
+							<div class="progress task-progress">
+								<div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+								</div>
+							</div>
+							<hr>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="pr-1 pl-1 col-md-6 col-sm-12 mb-2 ml-auto">
+				<div class="card">
+					<div class="card-body p-2">
+						<h5 class="text-center">Add a new task</h5>
+						<form class="add_task" action="/api/actions" method="POST">
+							<div class="form-group">
+							<input class="form-control" type="text" name="name" placeholder="Name" required/>
+						</div>
+
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+							<span class="input-group-text input-name">Goal</span>
+						</div>
+							<input class="form-control" type="number" value="1" name="duration" min="1" max="1440"	required>
+							<select class="custom-select" id="selectTime1" required>
+								<!-- <option selected>Choose...</option> -->
+								<option value="0" selected>minutes</option>
+								<option value="1">times</option>
+							</select>
+						</div>
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+								<span class="input-group-text input-name">Min. duration</span>
+							</div>
+							<input class="form-control" type="number" value="1" name="duration" min="1" max="1440"	required>
+							<select class="custom-select" id="selectTime2" required>
+							<!-- <option selected>Choose...</option> -->
+								<option value="0" selected>minutes</option>
+								<option value="1">times</option>
+							</select>
+						</div>
+							<div class="input-group mb-3">
+							<select class="custom-select" required>
+								<option value="" selected>Priority:</option>
+								<option value="0">Low</option>
+								<option value="1">Medium</option>
+								<option value="2">High</option>
+							</select>
+							</div>
+							<script>
+							let select1 = document.querySelector('#selectTime1');
+							let select2 = document.querySelector('#selectTime2');
+							select2.addEventListener('change', () => {
+								if (select1.selectedIndex != select2.selectedIndex)
+								select1.selectedIndex = select2.selectedIndex;
+							})
+							select1.addEventListener('change', () => {
+								if (select2.selectedIndex != select1.selectedIndex)
+								select2.selectedIndex = select1.selectedIndex;
+							})
+							 </script>
+							<div class="input-group mb-3">
+									<h6 class="">When can you do it?</h6>
+									<div id="weekli"></div>
+							</div>
+							<script>
+							console.log('ok1')
+							var weekli = new Weekli({
+								time_range: '0:00,24:00',
+								editable: true,
+								time_format: '24hour',
+							    week: 'custom',
+								week_days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+							});
+							weekli.build();
+							var addTask = document.querySelector('.add_task')
+							addTask.onSubmit()
+							console.log('ok')
+							</script>
+							<div class="form-group">
+								<button class="btn btn-primary btn-block">Add</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </section>
-
-<section class="bg-light">
-    <svg class="align-bottom" enable-background="new 0 0 1440 68" viewBox="0 0 1440 68"
-         xmlns="http://www.w3.org/2000/svg">
-        <path d="m1622.3 1937.7c0 0-410.7 169.1-913.4 75.5-502.7-93.6-977.7 56.3-977.7 56.3v440h1891.1v-571.8"
-              fill="#FFF" transform="translate(0-1977)"></path>
-    </svg>
-</section>
-
-<!-- features section -->
-<section class="py-7 bg-white" id="features">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 mx-auto text-center">
-                <h2 class="text-capitalize">You'll love what we offer</h2>
-                <p class="text-muted lead">Lorem ipsum dolor sit amet, Vestibulum in nisi commodo consectetur adipiscing
-                    elit. Vestibulum in nisi commodo, tempus odio a, vestibulum nibh.</p>
-            </div>
-        </div>
-        <div class="row mt-5 feature-boxes">
-            <div class="col-md-4 box">
-                <div class="icon-box">
-                    <div class="icon-box-inner small text-primary">
-                        <span data-feather="users" width="30" height="30"></span>
-                    </div>
-                </div>
-                <h5>Unlimited users</h5>
-                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum in nisi
-                    commodo, tempus odio a, vestibulum nibh.</p>
-            </div>
-            <div class="col-md-4 box">
-                <div class="icon-box">
-                    <div class="icon-box-inner small text-primary">
-                        <span data-feather="refresh-ccw" width="30" height="30"></span>
-                    </div>
-                </div>
-                <h5>Live updates</h5>
-                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum in nisi
-                    commodo, tempus odio a, vestibulum nibh.</p>
-            </div>
-            <div class="col-md-4 box">
-                <div class="icon-box">
-                    <div class="icon-box-inner small text-primary">
-                        <span data-feather="layout" width="30" height="30"></span>
-                    </div>
-                </div>
-                <h5>Easy-to-use</h5>
-                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum in nisi
-                    commodo, tempus odio a, vestibulum nibh.</p>
-            </div>
-            <div class="col-md-4 box">
-                <div class="icon-box">
-                    <div class="icon-box-inner small text-primary">
-                        <span data-feather="bell" width="30" height="30"></span>
-                    </div>
-                </div>
-                <h5>Smart notifications</h5>
-                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum in nisi
-                    commodo, tempus odio a, vestibulum nibh.</p>
-            </div>
-            <div class="col-md-4 box">
-                <div class="icon-box">
-                    <div class="icon-box-inner small text-primary">
-                        <span data-feather="message-circle" width="30" height="30"></span>
-                    </div>
-                </div>
-                <h5>Team chat</h5>
-                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum in nisi
-                    commodo, tempus odio a, vestibulum nibh.</p>
-            </div>
-            <div class="col-md-4 box">
-                <div class="icon-box">
-                    <div class="icon-box-inner small text-primary">
-                        <span data-feather="search" width="30" height="30"></span>
-                    </div>
-                </div>
-                <h5>Quick search</h5>
-                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum in nisi
-                    commodo, tempus odio a, vestibulum nibh.</p>
-            </div>
-        </div>
-        <div class="row mt-6">
-            <div class="col-md-9 mx-auto">
-                <div class="alert alert-primary text-center py-5">
-                    <div class="row">
-                        <div class="col-md-8 col-10 mx-auto">
-                            <h4>MacOS user? Download Scrum for macOS.</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum in nisi commodo,
-                                tempus odio a, vestibulum nibh.</p>
-                            <p class="mt-4 mb-0">
-                                <a href="#"><img class="img-fluid" src="img/mac-app-store.svg" alt="Download"/></a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="bg-white">
-    <svg class="align-bottom" enable-background="new 0 0 1440 68" viewBox="0 0 1440 68"
-         xmlns="http://www.w3.org/2000/svg">
-        <path d="m1622.3 1937.7c0 0-410.7 169.1-913.4 75.5-502.7-93.6-977.7 56.3-977.7 56.3v440h1891.1v-571.8"
-              fill="#f8f9fa" transform="translate(0-1977)"></path>
-    </svg>
-</section>
-
-<!--reviews section-->
-<section class="pt-7" id="reviews">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 mx-auto text-center">
-                <h2 class="text-capitalize">What others say about us</h2>
-                <p class="text-muted lead">Nam liber tempor cum soluta nobis eleifend option congue nihil imper per tem
-                    por legere me doming.</p>
-            </div>
-        </div>
-        <div class="row mt-6 review-wrapper">
-            <div class="col-md-6">
-                <div class="card review">
-                    <div class="card-body">
-                        <p class="quote">Praesent vulputate dolor velit, in condimentum odio pellentesin condimentum
-                            odio pellentesque libero.</p>
-                        <div class="mt-4 text-muted">
-                            <img src="img/client-1.jpg" class="img-review rounded-circle mr-2" alt="Client 1"/>
-                            <strong>Emma Jones</strong>, ClearBit
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card review">
-                    <div class="card-body">
-                        <p class="quote">Praesent vulputate dolor velit, pellentesin condimentum odio pellentesque
-                            libero. Nam liber tempor cum congue nihil imper per tem por legere me doming.</p>
-                        <div class="mt-4 text-muted">
-                            <img src="img/client-2.jpg" class="img-review rounded-circle mr-2" alt="Client 2"/>
-                            <strong>John Doe</strong>, Facebook
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card review">
-                    <div class="card-body">
-                        <p class="quote">Praesent vulputate dolor velit, pellentesin condimentum odio pellentesque
-                            libero. Nam liber tempor cum congue nihil imper per tem por legere me doming.</p>
-                        <div class="mt-4 text-muted">
-                            <img src="img/client-3.jpg" class="img-review rounded-circle mr-2" alt="Client 3"/>
-                            <strong>Katrine Deo</strong>, Twitter
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card review mt-md-6">
-                    <div class="card-body">
-                        <p class="quote">Praesent vulputate dolor velit, pellentesin condimentum odio pellentesque
-                            libero.</p>
-                        <div class="mt-4 text-muted">
-                            <img src="img/client-4.jpg" class="img-review rounded-circle mr-2" alt="Client 4"/>
-                            <strong>Eran Raval</strong>, Google
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<hr class="mt-7"/>
-
-<!--pricing section-->
-<section class="py-7" id="pricing">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 mx-auto text-center">
-                <h2 class="text-capitalize">Simple, fair pricing</h2>
-                <p class="text-muted lead">Praesent vulputate dolor velit, pellentesin condimentum odio pellentesque
-                    libero.</p>
-            </div>
-        </div>
-        <!--pricing tables-->
-        <div class="row mt-5 pricing-table">
-            <div class="col-sm-12">
-                <div class="card-group pricing-table">
-                    <div class="card text-center">
-                        <div class="card-body">
-                            <div class="icon-box bg-light">
-                                <div class="icon-box-inner small-xs text-primary">
-                                    <span data-feather="user" width="30" height="30"></span>
-                                </div>
-                            </div>
-                            <h4 class="card-title pt-3">Freelancer</h4>
-                            <ul class="list-unstyled pricing-list">
-                                <li>1 project</li>
-                                <li>Unlimited revisions</li>
-                                <li>1 user</li>
-                                <li>Unlimited guests</li>
-                                <li>500MB storage</li>
-                            </ul>
-                            <div class="card-title text-primary price pb-4"><sup>$</sup> <span>29</span> /month</div>
-                            <a href="#" class="btn btn-primary">
-                                Sign up
-                            </a>
-                        </div>
-                    </div>
-                    <div class="card text-center">
-                        <div class="card-body">
-                            <div class="icon-box">
-                                <div class="icon-box-inner small-xs text-primary">
-                                    <span data-feather="users" width="30" height="30"></span>
-                                </div>
-                            </div>
-                            <h4 class="card-title pt-3">Team</h4>
-                            <ul class="list-unstyled pricing-list">
-                                <li>15 projects</li>
-                                <li>Unlimited revisions</li>
-                                <li>15 users</li>
-                                <li>Unlimited guests</li>
-                                <li>1.5GB storage</li>
-                            </ul>
-                            <div class="card-title text-primary price pb-4"><sup>$</sup> <span>49</span> /month</div>
-                            <a href="#" class="btn btn-primary">
-                                Sign up
-                            </a>
-                        </div>
-                    </div>
-                    <div class="card text-center">
-                        <div class="card-body">
-                            <div class="icon-box bg-light">
-                                <div class="icon-box-inner small-xs text-primary">
-                                    <span data-feather="star" width="30" height="30"></span>
-                                </div>
-                            </div>
-                            <h4 class="card-title pt-3">Business</h4>
-                            <ul class="list-unstyled pricing-list">
-                                <li>Unlimited projects</li>
-                                <li>Unlimited revisions</li>
-                                <li>Unlimited users</li>
-                                <li>Unlimited guests</li>
-                                <li>5GB storage</li>
-                            </ul>
-                            <div class="card-title text-primary price pb-4"><sup>$</sup> <span>99</span> /month</div>
-                            <a href="#" class="btn btn-primary">
-                                Sign up
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row mt-6">
-            <div class="col-sm-4">
-                <div class="media">
-                    <div class="icon-box">
-                        <div class="icon-box-inner small-xs text-primary">
-                            <span data-feather="refresh-cw" width="30" height="30"></span>
-                        </div>
-                    </div>
-                    <div class="media-body">
-                        <h6 class="mt-0 mb-2">30-day trail</h6>
-                        <span class="text-muted">Nam liber tempor cum soluta nobis eleifend option congue nihil imper.</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="media">
-                    <div class="icon-box">
-                        <div class="icon-box-inner small-xs text-primary">
-                            <span data-feather="credit-card" width="30" height="30"></span>
-                        </div>
-                    </div>
-                    <div class="media-body">
-                        <h6 class="mt-0 mb-2">No credit card required</h6>
-                        <span class="text-muted">Nam liber tempor cum soluta nobis eleifend option congue nihil imper.</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="media">
-                    <div class="icon-box">
-                        <div class="icon-box-inner small-xs text-primary">
-                            <span data-feather="award" width="30" height="30"></span>
-                        </div>
-                    </div>
-                    <div class="media-body">
-                        <h6 class="mt-0 mb-2">All features included</h6>
-                        <span class="text-muted">Nam liber tempor cum soluta nobis eleifend option congue nihil imper.</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="bg-light">
-    <svg class="align-bottom" enable-background="new 0 0 1440 68" viewBox="0 0 1440 68"
-         xmlns="http://www.w3.org/2000/svg">
-        <path d="m1622.3 1937.7c0 0-410.7 169.1-913.4 75.5-502.7-93.6-977.7 56.3-977.7 56.3v440h1891.1v-571.8"
-              fill="#FFF" transform="translate(0-1977)"></path>
-    </svg>
-</section>
-
-<!--FAQ / CTA section-->
-<section class="py-7 bg-white" id="faq">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 mx-auto text-center">
-                <h2 class="text-capitalize">Frequestly Asked Questions</h2>
-                <p class="text-muted lead">Praesent vulputate dolor velit, pellentesin condimentum odio pellentesque
-                    libero.</p>
-            </div>
-        </div>
-        <div class="row mt-5">
-            <div class="col-md-10 mx-auto">
-                <div class="row">
-                    <div class="col-md-6 mb-5">
-                        <h6>Can I try Scrum for free?</h6>
-                        <p class="text-muted">Nam liber tempor cum soluta nobis eleifend option congue nihil imper per
-                            tem por legere me doming.</p>
-                    </div>
-                    <div class="col-md-6 mb-5">
-                        <h6>Do you have hidden fees?</h6>
-                        <p class="text-muted">Nam liber tempor cum soluta nobis eleifend option congue nihil imper per
-                            tem por legere me doming.</p>
-                    </div>
-                    <div class="col-md-6 mb-5">
-                        <h6>What are the payment methods you accept?</h6>
-                        <p class="text-muted">Nam liber tempor cum soluta nobis eleifend option congue nihil imper per
-                            tem por legere me doming.</p>
-                    </div>
-                    <div class="col-md-6 mb-5">
-                        <h6>How often do you release updates?</h6>
-                        <p class="text-muted">Nam liber tempor cum soluta nobis eleifend option congue nihil imper per
-                            tem por legere me doming.</p>
-                    </div>
-                    <div class="col-md-6 mb-5">
-                        <h6>What is your refund policy?</h6>
-                        <p class="text-muted">Nam liber tempor cum soluta nobis eleifend option congue nihil imper per
-                            tem por legere me doming.</p>
-                    </div>
-                    <div class="col-md-6 mb-5">
-                        <h6>How can I contact you?</h6>
-                        <p class="text-muted">Nam liber tempor cum soluta nobis eleifend option congue nihil imper per
-                            tem por legere me doming.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row mt-5">
-            <div class="col-md-10 mx-auto">
-                <div class="alert alert-primary d-md-flex flex-row align-items-center text-center text-md-left p-5">
-                    <div class="mb-4 mb-md-0">
-                        <h4>Try Scrum free for 30 days</h4>
-                        <span>Sign up now and create your first project.</span>
-                    </div>
-                    <a href="#signup"
-                       class="btn btn-primary ml-md-auto d-inline-flex flex-row align-items-center page-scroll">
-                        Get Started
-                        <em data-feather="arrow-right" width="20" height="20" class="ml-2"></em>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!--signup section-->
-<section class="bg-hero py-7" id="signup" style="background-image: url(img/mockup.svg)">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 my-md-auto text-center text-md-left pb-5 pb-md-0">
-                <h2 class="text-white">Get started with a free account</h2>
-                <p class="lead text-light">Magnis modipsae que voloratati andigen daepeditem quiate conecus aut labore.
-                    Laceaque quiae sitiorem rest non restibusaes maio es dem tumquam explabo.</p>
-            </div>
-            <div class="col-md-5 ml-auto">
-                <div class="card">
-                    <div class="card-body p-4">
-                        <h5 class="text-center">Fill the form below to sign up</h5>
-                        <form class="signup-form">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Full name">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Username">
-                            </div>
-                            <div class="form-group">
-                                <input type="email" class="form-control" placeholder="Email address">
-                            </div>
-                            <div class="form-group">
-                                <input type="password" class="form-control" placeholder="Password">
-                            </div>
-                            <div class="form-group">
-                                <button class="btn btn-primary btn-block">Create your account</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
+<!-- <section class="bg-light">
+	<svg class="align-bottom" enable-background="new 0 0 1440 68" viewBox="0 0 1440 68"
+		 xmlns="http://www.w3.org/2000/svg">
+		<path d="m1622.3 1937.7c0 0-410.7 169.1-913.4 75.5-502.7-93.6-977.7 56.3-977.7 56.3v440h1891.1v-571.8"
+				fill="#FFF" transform="translate(0-1977)"></path>
+	</svg>
+</section> -->
 <!--footer-->
-<footer class="py-6 bg-white">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-5 mr-auto">
-                <h6>About Scrum</h6>
-                <p>Magnis modipsae que voloratati andigen daepeditem quiate conecus aut labore. Laceaque quiae sitiorem
-                    rest non restibusaes maio es dem tumquam explabo.</p>
-                <ul class="list-inline social social-rounded social-sm">
-                    <li class="list-inline-item">
-                        <a href=""><i class="fa fa-facebook"></i></a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href=""><i class="fa fa-twitter"></i></a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href=""><i class="fa fa-google-plus"></i></a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href=""><i class="fa fa-dribbble"></i></a>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-sm-2">
-                <h6>Legal</h6>
-                <ul class="list-unstyled">
-                    <li><a href="#">Privacy</a></li>
-                    <li><a href="#">Terms</a></li>
-                    <li><a href="#">Refund policy</a></li>
-                </ul>
-            </div>
-            <div class="col-sm-2">
-                <h6>Partner</h6>
-                <ul class="list-unstyled">
-                    <li><a href="#">Refer a friend</a></li>
-                    <li><a href="#">Affiliates</a></li>
-                </ul>
-            </div>
-            <div class="col-sm-2">
-                <h6>Help</h6>
-                <ul class="list-unstyled">
-                    <li><a href="#">Support</a></li>
-                    <li><a href="#">Log in</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="row mt-5">
-            <div class="col-md-6 mx-auto text-muted text-center small-xl">
-                &copy; 2019 Scrum - Free Bootstrap 4 Multipurpose Landing Page Template by <a
-                    href="https://wireddots.com" target="_blank">Wired Dots</a>. Illustration by <a
-                    href="https://undraw.co/illustrations">unDraw</a>.
-            </div>
-        </div>
-    </div>
-</footer>
+<!-- <footer class="py-6 bg-white">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-5 mr-auto">
+				<h6>About Scrum</h6>
+				<p>Magnis modipsae que voloratati andigen daepeditem quiate conecus aut labore. Laceaque quiae sitiorem
+					rest non restibusaes maio es dem tumquam explabo.</p>
+				<ul class="list-inline social social-rounded social-sm">
+					<li class="list-inline-item">
+						<a href=""><i class="fa fa-facebook"></i></a>
+					</li>
+					<li class="list-inline-item">
+						<a href=""><i class="fa fa-twitter"></i></a>
+					</li>
+					<li class="list-inline-item">
+						<a href=""><i class="fa fa-google-plus"></i></a>
+					</li>
+					<li class="list-inline-item">
+						<a href=""><i class="fa fa-dribbble"></i></a>
+					</li>
+				</ul>
+			</div>
+			<div class="col-sm-2">
+				<h6>Legal</h6>
+				<ul class="list-unstyled">
+					<li><a href="#">Privacy</a></li>
+					<li><a href="#">Terms</a></li>
+					<li><a href="#">Refund policy</a></li>
+				</ul>
+			</div>
+			<div class="col-sm-2">
+				<h6>Partner</h6>
+				<ul class="list-unstyled">
+					<li><a href="#">Refer a friend</a></li>
+					<li><a href="#">Affiliates</a></li>
+				</ul>
+			</div>
+			<div class="col-sm-2">
+				<h6>Help</h6>
+				<ul class="list-unstyled">
+					<li><a href="#">Support</a></li>
+					<li><a href="#">Log in</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</footer> -->
 
 <!--scroll to top-->
 <div class="scroll-top">
-    <i class="fa fa-angle-up" aria-hidden="true"></i>
+	<i class="fa fa-angle-up" aria-hidden="true"></i>
 </div>
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

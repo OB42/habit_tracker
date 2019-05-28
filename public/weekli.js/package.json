@@ -1,0 +1,65 @@
+{
+  "_from": "weekli.js",
+  "_id": "weekli.js@1.0.1",
+  "_inBundle": false,
+  "_integrity": "sha1-0XSr7asguphgj+zxw6L9qFHBggw=",
+  "_location": "/weekli.js",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "weekli.js",
+    "name": "weekli.js",
+    "escapedName": "weekli.js",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/weekli.js/-/weekli.js-1.0.1.tgz",
+  "_shasum": "d174abedab20ba98608fecf1c3a2fda851c1820c",
+  "_spec": "weekli.js",
+  "_where": "/home/user/ht",
+  "author": {
+    "name": "Collin Walker"
+  },
+  "bugs": {
+    "url": "https://github.com/collnwalkr/weekli/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {},
+  "deprecated": false,
+  "description": "Javascript component that enables users to quickly select their availability on a week calendar.",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-bump": "^0.7.0",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-connect": "^0.11.2",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-less": "^1.2.0",
+    "grunt-contrib-uglify": "^0.11.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "less": "^2.6.0"
+  },
+  "homepage": "https://github.com/collnwalkr/weekli#readme",
+  "keywords": [
+    "javascript",
+    "ui",
+    "calender",
+    "widget",
+    "agenda",
+    "week",
+    "time"
+  ],
+  "license": "ISC",
+  "main": "Gruntfile.js",
+  "name": "weekli.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/collnwalkr/weekli.git"
+  },
+  "version": "1.0.1"
+}
