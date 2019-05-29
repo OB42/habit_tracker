@@ -3,10 +3,11 @@ var db = {
 	actions: new Datastore({ filename: __dirname + '/actions_db' })
 }
 db.actions.loadDatabase();
+//todo:find valid way of checking auth and handle redirection seamlessly
 module.exports.insertFunction = (req, res) => {
 	try {
-		var tmp_action = formToDoc(req.body);
-		console.log("insert", req.body)
+		var tmp_action = req.body;
+		console.log("insert", tmp_action)
 		tmp_action.user_id = req.user._id;
 		insertAction(tmp_action, (err, newDoc) => {
 			if (err) return tmp_err(res, err);
@@ -66,24 +67,14 @@ function habitReminder(actions, hours)
 }
 function formToDoc(body)
 {
-	return ({
-		name: body.name,
-		time_goal: parseFloat(body.duration),
-		priority: parseFloat(body.priority),
-		minimum_duration: parseFloat(body.split),
-		availability: {
-			//this is garbage
-			min: parseInt(body.min.split(":")[0]) + body.min.split(":")[1] / 60,
-			max: parseInt(body.max.split(":")[0]) + body.max.split(":")[1] / 60,
-			week: [!!body['Monday'], !!body['Tuesday'], !!body['Wednesday'], !!body['Thursday'], !!body['Friday'], !!body['Saturday'], !!body['Sunday']]
-		}
-	})
+	console.log(body)
+	return (body);
 }
 function tmp_err(res, err)
 {
 	console.log("api err", err)
 	res.status(520)
-	res.end();
+	res.end('error');
 }
 function insertAction(data, callback)
 {

@@ -42,7 +42,7 @@ app.post('/register', function(req, res){
 		if (err) {
 			console.error(err);
 		}
-		res.redirect('/profile')
+		res.redirect('/dashboard')
 	});
 });
 var LocalStrategy = require('passport-local').Strategy;
@@ -73,14 +73,14 @@ passport.deserializeUser(function(id, done) {
 	});
 });
 app.post('/login', passport.authenticate('local'),
-	(req, res) => res.redirect('/profile'));
+	(req, res) => res.redirect('/dashboard'));
 app.get('/logout', function(req, res){
 	req.logout();
 	res.redirect('/');
 });
-app.get('/profile', function(req, res) {
+app.get('/dashboard', function(req, res) {
 	if (!req.user)
 		res.redirect('/');
-	res.render('profile.ejs', {etage: ""});
+	res.render('dashboard.ejs', {title: "Dashboard", user: req.user});
 });
 app.listen(port);

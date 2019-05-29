@@ -1,0 +1,43 @@
+.wk-cell:not(.available) {
+	background-color: #e8e8e8!important;
+}
+.input-name {
+	color: #495057!important;
+	background-color: #e9ecef!important;
+	border: 1px solid #ced4da!important;
+}
+.wk-day {
+	max-width: 6em!important;
+	font-size: 80%;
+}
+
+table.weekli_desktop .wk-day-abbrv {
+  display: inline-block!important;
+}
+table.weekli_desktop .wk-day-long {
+  display: none!important;
+}
+table.weekli_desktop .wk-header
+{
+	padding: 0px!important;
+}
+.wk-time {
+	/* font-size: 14px!important; */
+}
+table.weekli tr {
+	height: 1em!important;
+}
+.input-group-text {
+	padding: 0.5rem!important;
+}
+.task-progress {
+	width: 100%!important;
+	/* height: 1em; */
+	display: inline-flex;
+}
+.add_task select {
+	min-width: 100px!important;
+}
+.no-tasks:not(:last-child), .task:last-child hr {
+	display: none;
+}
