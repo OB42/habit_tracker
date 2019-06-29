@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/main.css">
 	<link rel="stylesheet" href="css/red.css" id="theme-color">
-	<link rel="stylesheet" type="text/css" href="weekli.js/css/weekli.css"/>
+	<!-- <link rel="stylesheet" type="text/css" href="weekli.js/css/weekli.css"/> -->
 	<title><%= title %></title>
 </head>
 <body>
@@ -18,7 +18,7 @@
 <section class="smart-scroll">
 	<div class="container-fluid">
 		<nav class="navbar navbar-expand-md navbar-light pb-2 pt-2">
-			<a class="navbar-brand heading-black" href="index.html">
+			<a class="navbar-brand heading-black" href="/">
 				LifeCoach
 			</a>
 			<button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse"
@@ -28,9 +28,11 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarCollapse">
 				<ul class="navbar-nav ml-auto">
+					<%if (user) { %>
 					<li class="nav-item">
-						<a class="nav-link page-scroll" href="#features">Features</a>
+						<a class="nav-link page-scroll" href="/dashboard">Dashboard</a>
 					</li>
+					<% } %>
 					<li class="nav-item">
 						<a class="nav-link page-scroll" href="#reviews">Reviews</a>
 					</li>
@@ -40,6 +42,11 @@
 					<li class="nav-item">
 						<a class="nav-link page-scroll" href="#faq">FAQ</a>
 					</li>
+					<%if (user) { %>
+						<li class="nav-item">
+							<a class="btn btn-danger" href="/logout" role="button">Logout</a>
+						</li>
+					<% } %>
 				</ul>
 			</div>
 		</nav>

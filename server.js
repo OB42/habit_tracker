@@ -42,7 +42,7 @@ app.post('/register', function(req, res){
 		if (err) {
 			console.error(err);
 		}
-		res.redirect('/dashboard')
+		res.redirect('/')
 	});
 });
 var LocalStrategy = require('passport-local').Strategy;
@@ -80,7 +80,10 @@ app.get('/logout', function(req, res){
 });
 app.get('/dashboard', function(req, res) {
 	if (!req.user)
-		res.redirect('/');
+		return res.redirect('/');
 	res.render('dashboard.ejs', {title: "Dashboard", user: req.user});
+});
+app.get('/', function(req, res) {
+	res.render('index.ejs', {title: "LifeCoach", user: req.user});
 });
 app.listen(port);

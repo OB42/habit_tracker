@@ -6,7 +6,8 @@ var db = {
 db.users.loadDatabase();
 db.users.ensureIndex({ fieldName: 'email', unique: true }, function (err) {
 	// If there was an error, err is not null
-	console.log(err)
+	if (err)
+		console.error('signup err', err)
 });
 module.exports.createUser = function createUser(newUser, callback){
 	bcrypt.genSalt(10, function(err, salt) {
@@ -14,6 +15,7 @@ module.exports.createUser = function createUser(newUser, callback){
 		bcrypt.hash(newUser.password, salt, function(err, hash) {
 			if (err) return console.error(err);
 			newUser.password = hash;
+			newUser.current_action = {};
 			console.log(newUser)
 			db.users.insert(newUser, callback);
 		});

@@ -1,8 +1,32 @@
 var Datastore = require('nedb');
 var db = {
-	actions: new Datastore({ filename: __dirname + '/actions_db' })
+	actions: new Datastore({ filename: __dirname + '/actions_db' }),
+	actions_history: new Datastore({ filename: __dirname + '/actions_history_db' }),
+	users: new Datastore({ filename: __dirname + '/users_db' })
 }
 db.actions.loadDatabase();
+
+module.exports.setAction = (req, res) => {
+	try {
+		var tmp = req.body;
+		tmp.user_id = req.user._id;
+		tmp.timestamp = new Date().getTime();
+		console.log("start", tmp)
+		if (tmp.duration < 0 || tmp.duration.isNaN())
+			throw new Error('invalid duration');
+		actions.find({_id: tmp.id}, function (err, docs) {
+			if (docs.length == 0)
+				throw new Error('unavailable action');
+			users.update({_id: req.user._id},{ $set: {current_action: tmp}},
+				(err) => {
+					if (err) return tmp_err(res, err);
+					res.status(204);
+					res.end();
+				})
+		});
+	}
+	catch (err) { return tmp_err(res, err); }
+};
 //todo:find valid way of checking auth and handle redirection seamlessly
 module.exports.insertFunction = (req, res) => {
 	try {
