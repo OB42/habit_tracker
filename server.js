@@ -1,4 +1,3 @@
-// var request = require("request");
 var API = require('./API');
 var bodyParser = require('body-parser');
 var http = require('http');

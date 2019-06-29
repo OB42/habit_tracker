@@ -1,9 +1,5 @@
+var db = require('./db');
 var bcrypt = require('bcryptjs');
-var Datastore = require('nedb');
-var db = {
-	users: new Datastore({ filename: __dirname + '/users_db' })
-}
-db.users.loadDatabase();
 db.users.ensureIndex({ fieldName: 'email', unique: true }, function (err) {
 	// If there was an error, err is not null
 	if (err)
@@ -16,6 +12,7 @@ module.exports.createUser = function createUser(newUser, callback){
 			if (err) return console.error(err);
 			newUser.password = hash;
 			newUser.current_action = {};
+			newUser.actions_history = {};
 			console.log(newUser)
 			db.users.insert(newUser, callback);
 		});

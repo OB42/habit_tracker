@@ -21,33 +21,36 @@
 			<h1 class="text-capitalize">A smart way to manage your life.</h1>
 			<p class="lead text-muted mb-4">LifeCoach is developed for independent workers who seek to get the most out of their days.</p>
 			<!-- <hr> -->
-			<form class="signup-form" action="/register" method="POST">
-				<div class="form-group">
-				  <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter email">
-				  <small id="emailHelp" class="text-left form-text text-muted">We'll never share your email with anyone else.</small>
-				</div>
-				<div class="form-group">
-				  <input type="password" class="form-control" name="password" placeholder="Password">
-				</div>
-				<div class="form-group">
-					<button class="btn btn-primary btn-block" type="submit">Sign Up</button>
-				</div>
-			</form>
-			<hr>
-			<form class="login-form" action="/login" method="POST">
-				<div class="form-group">
-					<input type="email" class="form-control" placeholder="Email address" name="email" required>
-				</div>
-				<div class="form-group">
-					<input type="password" class="form-control" placeholder="Password" name="password" required>
-					<!-- <small class="text-left form-text"> -->
-						<a href="/forgot" class="text-muted form-text text-left">Forgot your password?</a>
-					<!-- </small> -->
-				</div>
-				<div class="form-group">
-					<button class="btn btn-primary btn-block" type="submit">Log In</button>
-				</div>
-			</form>
+			<%if (!user) { %>
+				<form class="signup-form" action="/register" method="POST">
+					<div class="form-group">
+					  <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter email">
+					  <small id="emailHelp" class="text-left form-text text-muted">We'll never share your email with anyone else.</small>
+					</div>
+					<div class="form-group">
+					  <input type="password" class="form-control" name="password" placeholder="Password">
+					</div>
+					<div class="form-group">
+						<button class="btn btn-primary btn-block" type="submit">Sign Up</button>
+					</div>
+				</form>
+				<hr>
+				<form class="login-form" action="/login" method="POST">
+					<div class="form-group">
+						<input type="email" class="form-control" placeholder="Email address" name="email" required>
+					</div>
+					<div class="form-group">
+						<input type="password" class="form-control" placeholder="Password" name="password" required>
+						<!-- <small class="text-left form-text"> -->
+							<a href="/forgot" class="text-muted form-text text-left">Forgot your password?</a>
+						<!-- </small> -->
+					</div>
+					<div class="form-group">
+						<button class="btn btn-primary btn-block" type="submit">Log In</button>
+					</div>
+				</form>
+			<% } %>
+
 		</div>
 		<div class="col-md-7 pt-md-0 order-1 order-md-2">
 			<a class="thumbnail" href="#">
